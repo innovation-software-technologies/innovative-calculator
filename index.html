@@ -1,94 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovative Calculator</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        input { margin: 10px; padding: 20px; }
-	button { margin: 10px; padding: 20px; hover: pointer; }
-	sup {
-    vertical-align: super;
-    font-size: smaller;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Operator Panel</title>
+  <style>
+    .operator-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      margin: 1em 0;
+    }
 
-		.operator-panel button {
-  font-size: 1.5rem;
-  padding: 0.5em 1em;
-  margin: 0.3em;
-  border: none;
-  border-radius: 8px;
-  background-color: #f0f0f0;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
+    .operator-panel button {
+      font-size: 1.5rem;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 8px;
+      background-color: #f0f0f0;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
 
-.operator-panel button:hover {
-  background-color: #d0eaff;
-}
+    .operator-panel button:hover {
+      background-color: #d0eaff;
+    }
 
-.operator-panel button.selected {
-  background-color: #0078d4;
-  color: white;
-}
-}
-    </style>
+    .operator-panel button.selected {
+      background-color: #0078d4;
+      color: white;
+    }
+
+    .large-op {
+      font-size: 1.8em;
+      display: inline-block;
+      transform: translateY(2px);
+    }
+  </style>
 </head>
 <body>
-    <h2>Innovative Calculator</h2>
-    <input type="number" value="0" id="num1" placeholder="Enter first number">
-    <br>
-  	
-<div class="operator-panel">
-  <button title="Add" onclick="setChoice('+', this)">＋</button>
-  <button title="Subtract" onclick="setChoice('-', this)">−</button>
-  <button title="Multiply" onclick="setChoice('*', this)">×</button>
-  <button title="Divide" onclick="setChoice('/', this)">÷</button>
-  <button title="Exponent" onclick="setChoice('^', this)">xʸ</button>
-  <button title="Modulus" onclick="setChoice('%', this)">mod</button>
-</div>
-  
-  <br>
-    <input type="number" value="0" id="num2" placeholder="Enter second number">
-    <br> <button title="Answer" onclick="answer()" style="padding: 10px 100px; margin: 0.5rem 0; hover: pointer;">=</button>
 
-    <h3>Result: <span id="result">0</span></h3>
-	<button title="Clear" onclick="clearFields()">Clear</button>
-    <script>
-        let choice;
+  <div class="operator-panel">
+    <button title="Add" onclick="setChoice('+', this)"><span class="large-op">＋</span></button>
+    <button title="Subtract" onclick="setChoice('-', this)"><span class="large-op">−</span></button>
+    <button title="Multiply" onclick="setChoice('*', this)"><span class="large-op">×</span></button>
+    <button title="Divide" onclick="setChoice('/', this)"><span class="large-op">÷</span></button>
+    <button title="Exponent" onclick="setChoice('^', this)">xʸ</button>
+    <button title="Modulus" onclick="setChoice('%', this)">mod</button>
+  </div>
 
-        function answer() {
-            if (choice) {
-                calculate(choice);
-            } else {
-                document.getElementById("result").innerText = "Select an operator!";
-            }
-        }
+  <script>
+    let choice = null;
 
-        function calculate(operator) {
-            const num1 = parseFloat(document.getElementById("num1").value);
-            const num2 = parseFloat(document.getElementById("num2").value);
-            let result;
+    function setChoice(op, el) {
+      choice = op;
+      document.querySelectorAll('.operator-panel button').forEach(btn =>
+        btn.classList.remove('selected')
+      );
+      el.classList.add('selected');
+      console.log("Selected operator:", choice);
+    }
+  </script>
 
-            switch (operator) {
-                case '+': result = num1 + num2; break;
-                case '-': result = num1 - num2; break;
-                case '*': result = num1 * num2; break;
-                case '/': result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero"; break;
-                case '^': result = num1 ** num2; break;
-                case '%': result = num1 % num2; break;
-                default: result = "Invalid operator!";
-            }
-
-            document.getElementById("result").innerText = result;
-        }
-      
-      function clearFields() {
-    document.getElementById("num1").value = 0;
-    document.getElementById("num2").value = 0;
-    document.getElementById("result").innerText = 0;
-    choice = undefined;
-}
-    </script>
 </body>
 </html>

@@ -130,4 +130,183 @@
   </script>
 
 </body>
+
+
+  
+  <div id = "calculator">
+  <head>
+    
+    <title>Temperature Converter</title>
+    
+    <style>
+    
+
+body {
+  background-color: #236168;
+}
+
+
+header{
+  text-align: center;
+  font-size: 26px;
+  padding: 20px;
+}
+
+
+label{
+  display: inline-block;
+  float: left;
+  clear: left;
+  width: 120px;
+  text-align: left;
+  padding-top: 1px;
+  font-size: 18px;
+}
+
+
+input{
+  padding: 10px 20px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+
+button{
+  border-radius: 6px;
+  padding: 15px;
+  text-decoration: none;
+  transition: all .3s;
+  font-family: sans-serif;
+  border-bottom-color: rgb(35, 64, 74);
+  outline: 0;
+  display: block;
+  color: #ffffff;
+  text-shadow: 1px 1px #1f272b;
+  border: 1px solid #1c252b;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#33cde2), color-stop(4%,#2e848d), color-stop(100%,#020606));
+  margin: 20px 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  position: relative;
+  left: 35%;
+}
+
+#calculator{
+  padding: 10px 70px;
+  border-radius: 15px;
+  color: #323944;
+  text-align: left;
+  border: 4px solid #225f65;
+  border-bottom-color: rgba(0, 0, 0, 0.65);
+  background: linear-gradient(180deg, #ffffff 0%, #f1f1f1 51%, #dedede 75%);
+  max-width: 500px;
+  min-width: 200px;
+  margin: 20px auto;
+  box-shadow: 0px 5px 40px -10px rgb(0, 0, 0);
+}
+
+
+#input{
+  text-align: left;
+  padding: 5px;
+  clear: both;
+  margin: 10px 0;
+}
+
+#thermometer{
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  max-height:20%;
+  max-width: 20%;
+}    
+    </style>
+  </head>
+  <img id = "thermometer" src="">
+  
+      
+        <header><b>Temperature Converter</b></header>
+  <body>
+      
+      
+
+    <div id = "input">
+      <label>Fahrenheit:</label><input id = "fahr" type = "number" size = "20" onkeyup = "convert('fahrenheit')">
+    </div>
+      
+
+    <div id = "input">
+      <label>Celsius:</label><input id = "cels" type = "number" size = "20" onkeyup ="convert('celsius')">
+    </div>
+
+    <div id = "input">
+      <label>Kelvin:</label><input id = "kel" type = "number" size = "20" onkeyup ="convert('kelvin')">
+    </div>
+      
+      
+      
+
+    <button type = "button" onclick="reset();">Clear Fields</button>
+
+
+    <script>
+
+function reset(){
+  document.getElementById('fahr').value = ''; 
+  document.getElementById('cels').value = '';
+  document.getElementById('kel').value = '';
+
+}
+
+
+ values
+function convert(degrees) {
+  var x = 0;
+  var y = 0;
+    
+    
+
+  if (degrees == "fahrenheit") {
+    x = (document.getElementById("fahr").value - 32) * 5 / 9;
+    x = x.toFixed(2);
+    document.getElementById("cels").value = x;
+    y = (parseFloat(document.getElementById("fahr").value) + 459.67) * 5 / 9;
+    y = y.toFixed(2);
+    document.getElementById("kel").value = y;
+    if(document.getElementById("fahr").value == ''){
+      document.getElementById("cels").value = '';
+      document.getElementById("kel").value = '';
+    }
+      
+  }
+     else if(degrees == "celsius"){
+    x = document.getElementById("cels").value * 9 / 5 + 32;
+    x = x.toFixed(2);
+    document.getElementById("fahr").value = x;
+    y = (parseFloat(document.getElementById("cels").value)) + 273.15;
+    y = y.toFixed(2);
+    document.getElementById("kel").value = y;
+      if(document.getElementById("cels").value == ''){
+      document.getElementById("fahr").value = '';
+      document.getElementById("kel").value = '';
+    }
+  }
+  else if(degrees == "kelvin"){
+    x = (document.getElementById("kel").value - 273) * 9 / 5 + 32;
+    x = x.toFixed(2);
+    document.getElementById("fahr").value = x;
+    y = document.getElementById("kel").value - 273;
+    y = y.toFixed(2);
+    document.getElementById("cels").value = y;
+      if(document.getElementById("kel").value == ''){
+      document.getElementById("fahr").value = '';
+      document.getElementById("cels").value = '';
+    }
+  }
+}
+    </script>
+    </body>
+  </div>
+
 </html>

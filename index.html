@@ -4,18 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Innovative Calculator & More</title>
-  <style>
+
+
+<style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 1em;
+      background-color: #236168;
     }
 
     input {
       margin: 10px;
-      padding: 20px;
-      font-size: 1.2rem;
+      padding: 10px 20px;
+      font-size: 16px;
       width: 200px;
+      display: inline-block;
     }
 
     .operator-panel {
@@ -23,7 +27,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.5em;
-      margin: 1em 0;
+      margin: 10px;
     }
 
     .operator-panel button {
@@ -56,14 +60,8 @@
       margin: 0.5rem 0;
       font-size: 1.2rem;
       cursor: pointer;
+  	  left: 25%;
     }
-
-
-    
-
-body {
-  background-color: #236168;
-}
 
 
 header{
@@ -72,24 +70,15 @@ header{
   padding: 20px;
 }
 
-
 label{
   display: inline-block;
   float: left;
   clear: left;
   width: 120px;
-  text-align: left;
+  text-align: center;
   padding-top: 1px;
   font-size: 18px;
 }
-
-
-input{
-  padding: 10px 20px;
-  font-size: 16px;
-  display: inline-block;
-}
-
 
 #temp-convert-button{
   cursor: pointer;
@@ -117,7 +106,7 @@ input{
   padding: 10px 70px;
   border-radius: 15px;
   color: #323944;
-  text-align: left;
+  text-align: center;
   border: 4px solid #225f65;
   border-bottom-color: rgba(0, 0, 0, 0.65);
   background: linear-gradient(180deg, #ffffff 0%, #f1f1f1 51%, #dedede 75%);
@@ -148,10 +137,75 @@ input{
   max-height:20%;
   max-width: 20%;
 }    
-    </style>
+
+
+input {
+  padding: 10px 20px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+button {
+  border-radius: 6px;
+  padding: 15px;
+  text-decoration: none;
+  transition: all .3s;
+  font-family: sans-serif;
+  border-bottom-color: rgb(35, 64, 74);
+  outline: 0;
+  display: block;
+  color: #ffffff;
+  text-shadow: 1px 1px #1f272b;
+  border: 1px solid #1c252b;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#33cde2), color-stop(4%,#2e848d), color-stop(100%,#020606));
+  margin: 0px 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  position: relative;
+
+}
+
+footer {
+  display: flex
+  position: relative;
+  bottom: -50%;
+}
+
+#currency-converter {
+  padding: 10px 70px;
+  border-radius: 15px;
+  color: #323944;
+  text-align: center;
+  border: 4px solid #225f65;
+  border-bottom-color: rgba(0, 0, 0, 0.65);
+  background: linear-gradient(180deg, #ffffff 0%, #f1f1f1 51%, #dedede 75%);
+  max-width: 500px;
+  min-width: 200px;
+  margin: 20px auto;
+  box-shadow: 0px 5px 40px -10px rgb(0, 0, 0);
+}
+
+#money-image {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  max-height: 20%;
+  max-width: 20%;
+}
+
+#input {
+  text-align: center;
+  padding: 5px;
+  clear: both;
+  margin: 10px 0;
+}
+      </style>  
+  
   </head>
 
 <body>
+
 <div class = "math">
   <h2>Innovative Calculator</h2>
 
@@ -173,6 +227,74 @@ input{
   <h3>Result: <span id="result">0</span></h3>
 
   <button id="clear" title="Clear" onclick="clearFields()">Clear</button>
+
+
+  </div>
+
+
+
+  
+  <div class = "calculator">
+  <img id = "thermometer" src="thermometer-rectangle.png">
+  
+      
+        <header><b>Temperature Converter</b></header>
+
+      
+      
+
+    <div id = "input">
+      <label>Fahrenheit:</label><input id = "fahr" type = "number" size = "20" onkeyup = "convert('fahrenheit')">
+    </div>
+      
+
+    <div id = "input">
+      <label>Celsius:</label><input id = "cels" type = "number" size = "20" onkeyup ="convert('celsius')">
+    </div>
+
+    <div id = "input">
+      <label>Kelvin:</label><input id = "kel" type = "number" size = "20" onkeyup ="convert('kelvin')">
+    </div>
+      
+
+    <button id=temp-convert-button type = "button" onclick="reset();">Clear Fields</button>
+    
+  </div>
+    
+    <div id="currency-converter">
+      <img id="money-image" src="/assets2/asset/53cff5b484aafacb0d00004f.png">
+      <header><b>Currency Converter</b></header>
+
+    <div id = "input">
+      <label>US Dollars:</label><input id = "usd" type = "number" size = "20" onkeyup = "convertCurrency('usd')">
+    </div>    
+
+      <div id="input">
+        <label>Euro:</label><input id="euro" type="number" size="20" onkeyup="convertCurrency('euro')">
+      </div>    
+
+      <div id="input">
+        <label>British Pound:</label><input id="pound" type="number" size="20" onkeyup="convertCurrency('pound')">
+      </div>
+
+      <div id="input">
+        <label>Canadian Dollar:</label><input id="cad" type="number" size="20" onkeyup="convertCurrency('cad')">
+      </div>    
+
+      <div id="input">.
+        <label>Indian Rupee:</label><input id="rupee" type="number" size="20" onkeyup="convertCurrency('rupee')">
+      </div>.
+
+      <div id="input">
+        <label>Bitcoin:</label><input id="bitcoin" type="number" size="20" onkeyup="convertCurrency('bitcoin')">
+      </div>
+
+      <button id="clear" type="button" onclick="reset()">Clear Fields</button>
+      <footer>
+        <p>*Rates as of 2025</p>
+      </footer>
+    </div>
+
 
   <script>
     let choice;
@@ -220,39 +342,7 @@ input{
         btn.classList.remove('selected')
       );
     }
-  </script>
-  </div>
 
-
-
-  
-  <div class = "calculator">
-  <img id = "thermometer" src="thermometer-rectangle.png">
-  
-      
-        <header><b>Temperature Converter</b></header>
-
-      
-      
-
-    <div id = "input">
-      <label>Fahrenheit:</label><input id = "fahr" type = "number" size = "20" onkeyup = "convert('fahrenheit')">
-    </div>
-      
-
-    <div id = "input">
-      <label>Celsius:</label><input id = "cels" type = "number" size = "20" onkeyup ="convert('celsius')">
-    </div>
-
-    <div id = "input">
-      <label>Kelvin:</label><input id = "kel" type = "number" size = "20" onkeyup ="convert('kelvin')">
-    </div>
-      
-
-    <button id=temp-convert-button type = "button" onclick="reset();">Clear Fields</button>
-
-
-    <script>
 
 function reset(){
   document.getElementById('fahr').value = ''; 
@@ -307,8 +397,50 @@ function convert(degrees) {
     }
   }
 }
+
+      
+        function reset() {
+  document.getElementById('usd').value = '';   
+  document.getElementById('euro').value = '';
+  document.getElementById('pound').value = '';
+  document.getElementById('cad').value = '';
+  document.getElementById('rupee').value = '';
+  document.getElementById('bitcoin').value = '';
+}
+
+// Conversion dictionary
+const currDict = {
+  "usd": 1.00,
+  "euro": 0.86,
+  "pound": 0.71,
+  "cad": 1.21,
+  "rupee": 73.00,
+  "bitcoin": 0.000008479
+
+};
+
+function convertCurrency(currency) {
+  const base = parseFloat(document.getElementById(currency).value);
+  if (isNaN(base)) return; 
+    
+  for (let key in currDict) {
+    if (key !== currency) {
+      let converted = base / currDict[currency] * currDict[key];
+      let rounded = key === "bitcoin" ? converted.toFixed(5) : converted.toFixed(2);
+      document.getElementById(key).value = rounded;
+    }
+  }
+}
+
+
+["usd", "euro", "pound", "cad", "rupee", "bitcoin"].forEach(currency => {
+  document.getElementById(currency).addEventListener("input", () => convertCurrency(currency));
+});
+
     </script>
+    
     </body>
-  </div>
+
 
 </html>
+    
